@@ -1,0 +1,22 @@
+{
+    "name": "caio-brendo/yii2-dynamicgridform",
+    "keywords": ["yii2", "grid", "dynamic", "form", "append"],
+    "description": "Dynamic Grid Form is a widget for the yii2 structure to add values to a grid. It is very useful for working with one-to-many data.",
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Caio Brendo",
+            "email": "caioaraujo.immv@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "caiobrendo\\dynamicgridform\\": "./src/"
+        }
+    },
+    "require": {
+        "yiisoft/yii2": "~2.0"
+    }
+}
