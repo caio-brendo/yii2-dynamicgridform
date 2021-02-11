@@ -1,0 +1,3 @@
+class DivInputRadio extends InputSingleValue{async getValue(){const radio=this.input.find('input:checked');const input=InputFactory.getInstance(radio,this.params);return input.getValue()}
+    async getValueGrid(){const radio=this.input.find('input:checked');const input=InputFactory.getInstance(radio,this.params);return input.getValueGrid()}
+    setValue(value){this.input.find(`input[value="${value}"]`).prop('checked',!0)}}

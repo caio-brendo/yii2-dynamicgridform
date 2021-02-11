@@ -1,0 +1,4 @@
+class ActionColumn extends Column{constructor(config){super(config);this.template=config.template;this.buttons=config.buttons;this.visibleButtons=config.visibleButtons}
+    async renderContent(values,index){const data=this.template.replace(/{([\w\-\/]+)}/g,(match,contents,offset,input_string)=>{let isVisible=!0;if(this.visibleButtons&&this.visibleButtons[contents]){isVisible=typeof this.visibleButtons[contents]==='function'?this.visibleButtons[contents](values,index):this.visibleButtons[contents]}
+        if(isVisible&&this.buttons[contents]){return typeof this.buttons[contents]==='function'?this.buttons[contents](values,index):this.buttons[contents]}
+        return''});return `<td ${this.cellOptions}>${data}</td>`}}

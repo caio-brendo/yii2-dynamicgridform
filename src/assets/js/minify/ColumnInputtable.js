@@ -1,0 +1,3 @@
+class ColumnInputtable extends Column{constructor(config){super(config);this.id=config.id;this.attribute=config.attribute;this.cleanAfterInsert=config.cleanAfterInsert;this.templateInputName=config.templateInputName;this.textOnInsert=config.textOnInsert;this.valueOnInsert=config.valueOnInsert;this.input=$('#'+this.id)}
+    get inputId(){return this.input.attr('id')}
+    get elementInput(){return this.input.get(0)}}
