@@ -35,7 +35,7 @@ at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 You can then install this widget using the following command:
 
 ~~~
-composer require caio-brendo/?
+composer require caio-brendo/yii2-dynamicgridform
 ~~~
 
 PREVIEW
