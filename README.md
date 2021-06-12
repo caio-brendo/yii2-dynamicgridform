@@ -41,7 +41,7 @@ composer require caio-brendo/yii2-dynamicgridform
 
 ## Release Changes
 
-> NOTE: Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widget-select2/blob/master/CHANGE.md) for details on changes to various releases.
+> NOTE: Refer the [CHANGE LOG](https://github.com/caio-brendo/yii2-dynamicgridform/blob/master/CHANGE.md) for details on changes to various releases.
 
 Enhancements with release v1.1.0:
 
