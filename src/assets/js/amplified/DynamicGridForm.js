@@ -5,8 +5,6 @@
  * @property {boolean} cleanAfterInsert
  * @property {string} templateInputName
  * @property {string} attribute
- */
-/**
  * @typedef {Object} ConfigType
  * @property {string} insertButton
  * @property {string} tableId
@@ -36,7 +34,7 @@ class DynamicGridForm {
     /**
      * @var {number}
      */
-    index
+    index;
     static bottom = 'bottom';
     static top = 'top';
 
@@ -143,7 +141,8 @@ class DynamicGridForm {
      */
     async triggerBeforeInsertEvent() {
         const valueColumns = await this.getValueColumns();
-        return $('#' + this.config.widgetContainer).triggerHandler('beforeInsert', valueColumns);
+        const valuesInserted = this.getAllDataTable();
+        return $('#' + this.config.widgetContainer).triggerHandler('beforeInsert', [valueColumns, valuesInserted, this]);
     }
 
     /**
@@ -411,5 +410,26 @@ class DynamicGridForm {
      */
     cancelEdit() {
         this.rowEdit.removeAttr('data-edit');
+    }
+
+    /**
+     * Returns all data inserted in the table
+     * @returns {*[]}
+     */
+    getAllDataTable() {
+        const ret = [];
+        $(this.selectorTableRows).each(async (key, row) => {
+            let object = {};
+            for (const [key, column] of this.columns.entries()) {
+                if (column.id){
+                    const element = $(row).find(`input[data-reference="${column.id}"]`);
+                    const factory = InputFactory.getInstance(element);
+                    object[column.id] = await factory.getValue();
+                }
+            }
+            ret.push(object);
+        });
+
+        return  ret;
     }
 }

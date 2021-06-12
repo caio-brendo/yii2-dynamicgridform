@@ -5,8 +5,9 @@
 
 Dynamic Grid Form is a widget for the yii2 structure to add values to a grid. It is very useful for working with one-to-many data. 
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/caio-brendo/rating-input)](https://packagist.org/packages/caio-brendo/rating-input)
-[![Total Downloads](https://img.shields.io/packagist/dm/caio-brendo/rating-input?color=green)](https://packagist.org/packages/caio-brendo/rating-input)
+[![Latest Stable Version](https://img.shields.io/packagist/v/caio-brendo/yii2-dynamicgridform)](https://packagist.org/packages/caio-brendo/yii2-dynamicgridform)
+
+[![Total Downloads](https://img.shields.io/packagist/dm/caio-brendo/yii2-dynamicgridform?color=green)](https://packagist.org/packages/caio-brendo/yii2-dynamicgridform)
 
 
 DIRECTORY STRUCTURE
@@ -37,6 +38,14 @@ You can then install this widget using the following command:
 ~~~
 composer require caio-brendo/yii2-dynamicgridform
 ~~~
+
+## Release Changes
+
+> NOTE: Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widget-select2/blob/master/CHANGE.md) for details on changes to various releases.
+
+Enhancements with release v1.1.0:
+
+- Added in event "beforeSend" the param "valuesInserted" and the reference for object DynamicGridForm
 
 PREVIEW
 ------------
@@ -527,11 +536,13 @@ JAVASCRIPT EVENTS
 /* 
 * This event is dispatched before insert a new row in the grid. 
 * If this event return false then a new row not will be inserted.
-* With this event you can valid if your fields is ok then insert a new row 
+* With this event you can valid if your fields is ok then insert a new row.
+* Since of v1.0.3 you can use the param valuesInserted to recovery all values 
+* already inserted and get the current instance of dynamicgridform by variable
+* dynamicGridForm
 */
-$('#dgf-container').on('beforeInsert', (event, values) => {
-
-    console.log('beforeInsert', event, values);
+$('#dgf-container').on('beforeInsert', (event, values, valuesInserted, dynamicGridForm) => {
+    console.log('beforeInsert', event, values, valuesInserted, dynamicGridForm);
 });
 
 /* This event is dispatched after insert a new row in the grid.*/
