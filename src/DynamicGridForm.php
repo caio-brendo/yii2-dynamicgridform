@@ -167,9 +167,8 @@ class DynamicGridForm extends Widget
      */
     public function registerJs(View $view)
     {
-        $js = "new DynamicGridForm({$this->configToJson()});";
+        $js = "var dgf{$this->getHash()} = new DynamicGridForm({$this->configToJson()});";
         $view->registerJs($js, $view::POS_READY);
-
         DynamicGridFormAsset::register($view);
     }
 
