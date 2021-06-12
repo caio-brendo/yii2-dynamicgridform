@@ -140,7 +140,7 @@ class DynamicGridForm extends Widget
      */
     public function getHash()
     {
-        return hash('crc32', time());
+        return hash('crc32', uniqid('', true));
     }
 
     /**
