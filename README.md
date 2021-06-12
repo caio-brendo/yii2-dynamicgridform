@@ -76,6 +76,8 @@ use yii\widgets\ActiveForm;
 /* @var $telephones Telephone[] */
 ?>
 <div class="row">
+         <!-- Necessary for update -->
+         <?= Html::hiddenInput('id', '', ['id' => 'telephone-id']) ?>
         <div class="col-md-2">
             <div class="form-group">
                 <label class="control-label" for="telephone-ddi">DDI</label>
@@ -128,6 +130,17 @@ use yii\widgets\ActiveForm;
         <?= DynamicGridForm::widget([
             'widgetContainer' => 'dgf-container',
             'columns' => [
+                [
+                    'class' => NormalColumn::class,
+                    'id' => 'telephone-id',
+                    'attribute' => 'id',
+                    'options' => [
+                        'class' => 'hide'
+                    ],
+                    'headerOptions' => [
+                        'class' => 'hide' #Hide column
+                    ]
+                ],
                 [
                     'id' => 'telephone-ddi',
                     'attribute' => 'ddi',
