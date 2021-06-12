@@ -104,7 +104,7 @@ class DynamicGridForm extends Widget
         }
 
         if (!$this->insertButton) {
-            throw new InvalidConfigException("The 'insertButton' property must be an array.");
+            throw new InvalidConfigException("The 'insertButton' property must be set.");
         }
 
         if (!is_array($this->multipleModels)) {
@@ -112,7 +112,7 @@ class DynamicGridForm extends Widget
         }
 
         if (!$this->modelClass){
-            throw new InvalidConfigException("The 'modelClass' property must be an array.");
+            throw new InvalidConfigException("The 'modelClass' property must be set.");
         }
 
         $this->hash = $this->getHash();
