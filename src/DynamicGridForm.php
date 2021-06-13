@@ -150,10 +150,14 @@ class DynamicGridForm extends Widget
     public function initColumns()
     {
         foreach ($this->columns as $key => $column) {
-            $class = isset($column['class']) ? $column['class'] : NormalColumn::class;
+            if (!array_key_exists('class', $column)){
+                $column['class'] = array_key_exists('id', $column) ?
+                    NormalColumn::class :
+                    UnreferencedColumn::class;
+            }
             $this->columns[$key] = Yii::createObject(ArrayHelper::merge(
                 [
-                    'class' => $class,
+                    'class' => $column['class'],
                     'grid' => $this
                 ],
                 $column

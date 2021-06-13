@@ -43,9 +43,9 @@ composer require caio-brendo/yii2-dynamicgridform
 
 > NOTE: Refer the [CHANGE LOG](https://github.com/caio-brendo/yii2-dynamicgridform/blob/master/CHANGE.md) for details on changes to various releases.
 
-Enhancements with release v1.1.0:
+Enhancements with release v1.2.0:
 
-- Added in event "beforeSend" the param "valuesInserted" and the reference for object DynamicGridForm
+- Column without referenced input
 
 PREVIEW
 ------------
@@ -339,7 +339,7 @@ The widget supports all parameters that one would pass for any [Yii Input Widget
 * columns: An array with column settings. Currently, we have two settings for columns: NormalColumn and ActionColumn. For NormalColumn the parameters accept are: 
     * headerOptions: An array with the options of header. You can see the options allowed [here](https://www.yiiframework.com/doc/api/2.0/yii-helpers-basehtml#renderTagAttributes()-detail).   
     * options: An array with the options of content. You can see the options allowed [here](https://www.yiiframework.com/doc/api/2.0/yii-helpers-basehtml#renderTagAttributes()-detail).
-    * id: A string that reference an input id. This param is required
+    * id: A string that reference an input id. Since of v1.2.0 this param is optional and you can have a column without referenced input 
     * attribute: A string that referece an attribute of the model informed. This param is required
     * value: An string or clousure that will return the value of input hidden when the widget is rendered. When clousure is informed then the signature must be:
     ```php
@@ -363,7 +363,7 @@ The widget supports all parameters that one would pass for any [Yii Input Widget
   //...
   ?>
     ```
-    * valueOnInsert: An string or an object of the class JsExpression that will return the value of input hidden when the new row is added. When object of the class JsExpression is informed then the signature must be:
+    * valueOnInsert: An string or an object of the class JsExpression that will return the value of input hidden when the new row is added. Since of v1.2.0 this param is required when the param 'id' is not informed. When object of the class JsExpression is informed then the signature must be:
     ```php
   <?php 
   use yii\web\JsExpression;
@@ -406,7 +406,7 @@ The widget supports all parameters that one would pass for any [Yii Input Widget
   //...
   ?>
     ```
-    * textOnInsert: An string or clousure that will return the text that will shown in the grid when the new row is added. When object of the class JsExpression is informed then the signature must be:
+    * textOnInsert: An string or clousure that will return the text that will shown in the grid when the new row is added. Since of v1.2.0 this param is required when the param 'id' is not informed. When object of the class JsExpression is informed then the signature must be:
     ```php
   <?php 
   use yii\web\JsExpression;

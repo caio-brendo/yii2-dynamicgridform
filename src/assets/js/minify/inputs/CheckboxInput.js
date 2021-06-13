@@ -1,1 +1,0 @@
-class CheckboxInput extends RadioInput{}

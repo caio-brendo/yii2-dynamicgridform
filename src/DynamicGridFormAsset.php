@@ -14,28 +14,6 @@ class DynamicGridFormAsset extends AssetBundle
     /**
      * @inheritdoc
      */
-    public $js = [
-        'js/amplified/InputHelper.js',
-        'js/amplified/DynamicGridForm.js',
-        'js/amplified/Column.js',
-        'js/amplified/ColumnInputtable.js',
-        'js/amplified/ActionColumn.js',
-        'js/amplified/NormalColumn.js',
-        'js/amplified/inputs/BaseInput.js',
-        'js/amplified/inputs/InputMultipleValue.js',
-        'js/amplified/inputs/InputSingleValue.js',
-        'js/amplified/inputs/RadioInput.js',
-        'js/amplified/inputs/CheckboxInput.js',
-        'js/amplified/inputs/DivInputCheckbox.js',
-        'js/amplified/inputs/DivInputRadio.js',
-        'js/amplified/inputs/InputFactory.js',
-        'js/amplified/inputs/FileInput.js',
-        'js/amplified/inputs/SelectInputSingle.js',
-    ];
-
-    /**
-     * @inheritdoc
-     */
     public $depends = [
         'yii\web\JqueryAsset'
     ];
@@ -46,4 +24,49 @@ class DynamicGridFormAsset extends AssetBundle
     public $publishOptions = [
         'forceCopy' => YII_DEBUG ? true : false,
     ];
+
+    /**
+     * Set up the JavaScript
+     * @return void
+     */
+    public function setupJs(){
+        $files = [
+            'js/InputHelper',
+            'js/DynamicGridForm',
+            'js/Column',
+            'js/TextColumn',
+            'js/ActionColumn',
+            'js/NormalColumn',
+            'js/inputs/BaseInput',
+            'js/inputs/InputMultipleValue',
+            'js/inputs/InputSingleValue',
+            'js/inputs/RadioInput',
+            'js/inputs/CheckboxInput',
+            'js/inputs/DivInputCheckbox',
+            'js/inputs/DivInputRadio',
+            'js/inputs/InputFactory',
+            'js/inputs/FileInput',
+            'js/inputs/SelectInputSingle',
+            'js/UnreferencedColumn',
+        ];
+        $js = [
+            'amplified' => [],
+            'minified' => []
+        ];
+        foreach ($files as $file){
+            $js['amplified'][] = "$file.js";
+            $js['minified'][] = "$file.min.js";
+        }
+
+        $this->js = YII_DEBUG ? $js['amplified'] : $js ['minified'];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        $this->setupJs();
+        parent::init();
+    }
 }

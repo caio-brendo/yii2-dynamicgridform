@@ -1,8 +1,7 @@
-class ColumnInputtable extends Column {
+class TextColumn extends Column {
     /**
      * @inheritDoc
      * @param {Object} config
-     * @param {string} config.id The id of input
      * @param {string} config.attribute The attribute of input
      * @param {boolean} config.cleanAfterInsert If clean input after insert
      * @param {string} config.templateInputName
@@ -12,31 +11,16 @@ class ColumnInputtable extends Column {
      */
     constructor(config) {
         super(config);
-        this.id = config.id;
+
+        if (this.constructor === Column) {
+            throw new Error("Abstract classes can't be instantiated.");
+        }
+
         this.attribute = config.attribute;
         this.cleanAfterInsert = config.cleanAfterInsert;
         this.templateInputName = config.templateInputName;
         this.textOnInsert = config.textOnInsert;
         this.valueOnInsert = config.valueOnInsert;
-        /**
-         * @type {jQuery}
-         */
-        this.input = $('#' + this.id);
     }
 
-    /**
-     * Return id of input referenced
-     * @returns {string}
-     */
-    get inputId(){
-        return this.input.attr('id');
-    }
-
-    /**
-     * Returns element html referenced by input
-     * @returns {Element}
-     */
-    get elementInput(){
-        return this.input.get(0);
-    }
 }

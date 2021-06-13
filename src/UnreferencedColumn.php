@@ -7,7 +7,7 @@ use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 
-class NormalColumn extends TextColumn
+class UnreferencedColumn extends TextColumn
 {
     /**
      * @var bool Clean input after insert grid
@@ -18,21 +18,21 @@ class NormalColumn extends TextColumn
      */
     public $header;
 
-    /** @var string */
-    public $id;
-
-
     /**
      *
      */
     public function init()
     {
-        if (!$this->id) {
-            throw new InvalidConfigException("The 'id' property must be set.");
-        }
-
         if (!$this->attribute) {
             throw new InvalidConfigException("The 'attribute' property must be set.");
+        }
+
+        if (!$this->textOnInsert) {
+            throw new InvalidConfigException("The 'textOnInsert' property must be set.");
+        }
+
+        if (!$this->valueOnInsert) {
+            throw new InvalidConfigException("The 'valueOnInsert' property must be set.");
         }
     }
 
@@ -59,26 +59,7 @@ class NormalColumn extends TextColumn
     public function getClassJs()
     {
         $config = Json::encode($this);
-        return new JsExpression("new NormalColumn($config)");
-    }
-
-    /**
-     * Returns the input
-     * @param $model Model
-     * @param $key int
-     * @return string
-     */
-    public function getInput($model, $key)
-    {
-        $attribute = $this->attribute;
-        $value = $model->$attribute;
-        if ($this->value) {
-            $value = $this->value instanceof Closure
-                ? call_user_func($this->value, $model, $key, $key)
-                : $this->value;
-        }
-        $name = Html::getInputName($model, "[$key]$attribute");
-        return "<input type=\"hidden\" name=\"$name\" value=\"{$value}\" data-reference=\"{$this->id}\" >";
+        return new JsExpression("new UnreferencedColumn($config)");
     }
 
 }
