@@ -34,7 +34,12 @@ class InputHelper {
         let ret = [];
         values.forEach((v) => {
             ret.push(
-                `<input type="hidden" name="${this.getNewNameInput(baseName, values.length > 1, index)}" value="${v.value}" data-reference="${v.reference}">`
+                `<input 
+                    type="hidden" 
+                    name="${this.getNewNameInput(baseName, values.length > 1, index)}"
+                    value="${v.value}" 
+                    ${v.reference ? `data-reference="${v.reference}"` : ''}
+                >`
             );
         });
 

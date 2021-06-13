@@ -1,6 +1,12 @@
 Change Log: `yii2-dynamicgridform`
 =================================
 
+## [Version 1.2.0](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.1.0...v1.2.0)
+
+**Date:** 13-June-2021
+
+- [(enh #8)](https://github.com/caio-brendo/yii2-dynamicgridform/issues/6): Column without referenced input
+
 ## [Version 1.1.0](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.0.2...v1.1.0)
 
 **Date:** 12-June-2021
