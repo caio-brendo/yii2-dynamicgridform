@@ -20,7 +20,8 @@ class Helper extends Model
         $model = new $modelClass;
         $formName = $model->formName();
         $pkModel = $model->tableSchema->primaryKey;
-        $post = empty($data) ? Yii::$app->request->post($formName) : $data[$formName];
+        $post = empty($data) ? Yii::$app->request->post($formName) :
+            self::getValueIfKeyExists($formName, $data);
         $models = [];
 
         if (!empty($multipleModels)) {
@@ -47,5 +48,18 @@ class Helper extends Model
         unset($model, $formName, $post);
 
         return (!isset($models) || empty($models)) ? [] : $models;
+    }
+
+    /**
+     * Checks if key exists in informed array and returns your value.
+     * If the key not exists returns null.
+     * @param $key int|string
+     * @param $array array|\ArrayObject
+     * @return null
+     */
+    public static function getValueIfKeyExists($key, $array){
+        return array_key_exists($key, $array) ?
+            $array[$key] :
+            null;
     }
 }

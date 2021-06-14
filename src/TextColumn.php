@@ -7,14 +7,10 @@ use yii\base\Model;
 use yii\helpers\Html;
 use yii\web\JsExpression;
 
-abstract class ColumnInputtable extends Column
+abstract class TextColumn extends Column
 {
     /** @var string */
-    public $id;
-    /** @var string */
     public $attribute;
-    /** @var string */
-    public $templateInputName;
     /** @var string|Closure */
     public $value;
     /** @var string|JsExpression */
@@ -23,6 +19,8 @@ abstract class ColumnInputtable extends Column
     public $text;
     /** @var string|JsExpression */
     public $textOnInsert;
+    /** @var string */
+    public $templateInputName;
 
     /**
      * @inheritDoc
@@ -34,26 +32,6 @@ abstract class ColumnInputtable extends Column
 
         parent::__construct($config);
 
-    }
-
-
-    /**
-     * Returns the input
-     * @param $model Model
-     * @param $key int
-     * @return string
-     */
-    public function getInput($model, $key)
-    {
-        $attribute = $this->attribute;
-        $value = $model->$attribute;
-        if ($this->value) {
-            $value = $this->value instanceof Closure
-                ? call_user_func($this->value, $model, $key, $key)
-                : $this->value;
-        }
-        $name = Html::getInputName($model, "[$key]$attribute");
-        return "<input type=\"hidden\" name=\"$name\" value=\"{$value}\" data-reference=\"{$this->id}\" >";
     }
 
     /**

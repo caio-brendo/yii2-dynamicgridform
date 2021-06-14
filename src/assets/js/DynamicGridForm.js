@@ -49,7 +49,7 @@ class DynamicGridForm {
 
         this.insertButton.on('click', this.handleClickInsertButton.bind(this));
 
-        if (this.deleteRowClass){
+        if (this.deleteRowClass) {
             $(document).on('click', `#${this.widgetContainer} .${this.deleteRowClass}`, this.handleDeleteRow.bind(this));
         }
 
@@ -63,7 +63,7 @@ class DynamicGridForm {
      * @returns {boolean}
      */
     limitReached() {
-        if (this.config.max === 0){
+        if (this.config.max === 0) {
             return false;
         }
 
@@ -219,7 +219,7 @@ class DynamicGridForm {
             }
             $(currentTarget).attr('data-edit', true);
             let added = [];
-            $(currentTarget).find('input').each((k, v) => {
+            $(currentTarget).find('input[data-reference]').each((k, v) => {
                 const reference = $(v).attr('data-reference');
                 const referenceElement = $('#' + reference);
 
@@ -421,7 +421,7 @@ class DynamicGridForm {
         $(this.selectorTableRows).each(async (key, row) => {
             let object = {};
             for (const [key, column] of this.columns.entries()) {
-                if (column.id){
+                if (column.id) {
                     const element = $(row).find(`input[data-reference="${column.id}"]`);
                     const factory = InputFactory.getInstance(element);
                     object[column.id] = await factory.getValue();
@@ -430,6 +430,6 @@ class DynamicGridForm {
             ret.push(object);
         });
 
-        return  ret;
+        return ret;
     }
 }
