@@ -41,7 +41,7 @@ class Helper extends Model
 
         if ($scenario) {
             foreach ($models as $model) {
-                $model->cenario = $scenario;
+                $model->scenario = $scenario;
             }
         }
 
