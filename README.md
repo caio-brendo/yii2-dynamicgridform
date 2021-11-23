@@ -43,9 +43,9 @@ composer require caio-brendo/yii2-dynamicgridform
 
 > NOTE: Refer the [CHANGE LOG](https://github.com/caio-brendo/yii2-dynamicgridform/blob/master/CHANGE.md) for details on changes to various releases.
 
-Enhancements with release v1.2.0:
+Bugs fixed with release v1.2.1:
 
-- Column without referenced input
+- Scenario doesn't work
 
 PREVIEW
 ------------
