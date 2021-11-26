@@ -1,6 +1,10 @@
 Change Log: `yii2-dynamicgridform`
 =================================
 
+## [Version 1.2.2](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.2.1...v1.2.2)
+
+**Date:** 26-November-2021
+
 ## [Version 1.2.1](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.2.0...v1.2.1)
 
 **Date:** 23-November-2021

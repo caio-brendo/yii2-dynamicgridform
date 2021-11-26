@@ -47,4 +47,25 @@ abstract class TextColumn extends Column
         return (new $this->grid->modelClass())
             ->getAttributeLabel($this->attribute);
     }
+
+    /**
+     * Returns the input
+     * @param $model Model
+     * @param $key int
+     * @param $id string
+     * @return string
+     */
+    public function getInput($model, $key, $id = null)
+    {
+        $attribute = $this->attribute;
+        $value = $model->$attribute;
+        if ($this->value) {
+            $value = $this->value instanceof Closure
+                ? call_user_func($this->value, $model, $key, $key)
+                : $this->value;
+        }
+        $reference = $id ? 'data-reference="{$id}"' : '';
+        $name = Html::getInputName($model, "[$key]$attribute");
+        return "<input type=\"hidden\" name=\"$name\" value=\"{$value}\" $reference>";
+    }
 }
