@@ -62,23 +62,4 @@ class NormalColumn extends TextColumn
         return new JsExpression("new NormalColumn($config)");
     }
 
-    /**
-     * Returns the input
-     * @param $model Model
-     * @param $key int
-     * @return string
-     */
-    public function getInput($model, $key)
-    {
-        $attribute = $this->attribute;
-        $value = $model->$attribute;
-        if ($this->value) {
-            $value = $this->value instanceof Closure
-                ? call_user_func($this->value, $model, $key, $key)
-                : $this->value;
-        }
-        $name = Html::getInputName($model, "[$key]$attribute");
-        return "<input type=\"hidden\" name=\"$name\" value=\"{$value}\" data-reference=\"{$this->id}\" >";
-    }
-
 }
