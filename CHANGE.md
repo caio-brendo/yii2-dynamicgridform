@@ -1,6 +1,12 @@
 Change Log: `yii2-dynamicgridform`
 =================================
 
+## [Version 1.3.0](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.2.1...v1.3.0)
+
+**Date:** 02-December-2021
+- [(enh #16)](https://github.com/caio-brendo/yii2-dynamicgridform/issues/16): Triggering before and after delete event
+- Minifying Javascripts
+
 ## [Version 1.2.2](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.2.1...v1.2.2)
 
 **Date:** 26-November-2021
