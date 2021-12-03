@@ -176,11 +176,18 @@ class DynamicGridForm {
      * @param event {Event}
      * @returns {void}
      */
-    handleDeleteRow(event) {
+    async handleDeleteRow(event) {
         event.stopPropagation();
         const {currentTarget} = event;
-        $(currentTarget).parent().parent().remove();
+        const line = $(currentTarget).parent().parent();
+        const del = this.triggerBeforeDelete(line.get(0));
+
+        if (del === false){
+            return;
+        }
+        line.remove();
         this.reorderInputs();
+        this.triggerAfterDelete(line);
     }
 
     /**
@@ -431,5 +438,23 @@ class DynamicGridForm {
         });
 
         return ret;
+    }
+
+    /**
+     * Dispatch before delete event
+     * @param {Node} line
+     * @return {boolean}
+     */
+    async triggerBeforeDelete(line) {
+        return $('#' + this.config.widgetContainer).triggerHandler('beforeDelete', [line, this]);
+    }
+
+    /**
+     * Dispatch after delete event
+     * @param {Node} line
+     * @return {void}
+     */
+    triggerAfterDelete(line) {
+        $('#' + this.config.widgetContainer).triggerHandler('afterDelete', [line, this]);
     }
 }
