@@ -43,9 +43,10 @@ composer require caio-brendo/yii2-dynamicgridform
 
 > NOTE: Refer the [CHANGE LOG](https://github.com/caio-brendo/yii2-dynamicgridform/blob/master/CHANGE.md) for details on changes to various releases.
 
-Bugs fixed with release v1.2.2:
+Enhancements with release v1.3.0:
 
-- Removing error in unreferenced column
+- Triggering before and after delete event
+- Minifying Javascripts
 
 PREVIEW
 ------------
@@ -576,5 +577,15 @@ $('#dgf-container').on('beforeUpdate', (event, values) => {
 /* This event is dispatched after update a new row in the grid.*/
 $('#dgf-container').on('afterUpdate', (event, item) => {
     console.log('afterUpdate', item);
+});
+
+/* This event is dispatched before delete a row in the grid. */
+$('#dgf-container').on('beforeDelete', (event, item, dynamicGridForm) => {
+  console.log('beforeDelete', event, item, dynamicGridForm);
+});
+
+/* This event is dispatched after update a new row in the grid.*/
+$('#dgf-container').on('afterDelete', (event, item, dynamicGridForm) => {
+  console.log('afterDelete', event, item, dynamicGridForm);
 });
 ```
