@@ -5,7 +5,7 @@ namespace caiobrendo\dynamicgridform;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Model;
-use yii\bootstrap\Widget;
+use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\web\View;
