@@ -1,5 +1,9 @@
 Change Log: `yii2-dynamicgridform`
 =================================
+## [Version 1.4.0](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.3.0...v1.4.0)
+
+**Date:** 27-February-2022
+- [(enh #20)](https://github.com/caio-brendo/yii2-dynamicgridform/issues/20): Remove dependecy of yii bootstrap widget
 
 ## [Version 1.3.0](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.2.1...v1.3.0)
 

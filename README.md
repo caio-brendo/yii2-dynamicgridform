@@ -43,10 +43,9 @@ composer require caio-brendo/yii2-dynamicgridform
 
 > NOTE: Refer the [CHANGE LOG](https://github.com/caio-brendo/yii2-dynamicgridform/blob/master/CHANGE.md) for details on changes to various releases.
 
-Enhancements with release v1.3.0:
+Enhancements with release v1.4.0:
 
-- Triggering before and after delete event
-- Minifying Javascripts
+- Remove dependecy of yii bootstrap widget
 
 PREVIEW
 ------------
