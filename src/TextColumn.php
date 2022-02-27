@@ -64,7 +64,7 @@ abstract class TextColumn extends Column
                 ? call_user_func($this->value, $model, $key, $key)
                 : $this->value;
         }
-        $reference = $id ? 'data-reference="{$id}"' : '';
+        $reference = $id ? "data-reference=\"$id\"" : '';
         $name = Html::getInputName($model, "[$key]$attribute");
         return "<input type=\"hidden\" name=\"$name\" value=\"{$value}\" $reference>";
     }

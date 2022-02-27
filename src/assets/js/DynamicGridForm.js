@@ -425,13 +425,14 @@ class DynamicGridForm {
      */
     async getAllDataTable() {
         const ret = [];
-        for (const row of $(this.selectorTableRows).toArray()) {
+        for (const [key, row] of $(this.selectorTableRows).toArray().entries()) {
             let object = {};
             for (const [key2, column] of this.columns.entries()) {
-                if (column.id) {
-                    const element = $(row).find(`input[data-reference="${column.id}"]`);
+                if (column.classJs instanceof TextColumn) {
+                    const name = column.templateInputName.replace('<@>', key);
+                    const element = $(row).find(`input[name="${name}"]`);
                     const factory = InputFactory.getInstance(element);
-                    object[column.id] = await factory.getValue();
+                    object[column.attribute] = await factory.getValue();
                 }
             }
             ret.push(object);
