@@ -556,7 +556,7 @@ window['{stringInformedInThevariableJsName}']
 ```
 - You can get the all values inserted in the grid with the follow code:
 ```javascript
-window[$("#tableId").attr('data-object')].getAllDataTable()
+await window[$("#tableId").attr('data-object')].getAllDataTable()
 ```
 
 JAVASCRIPT EVENTS
