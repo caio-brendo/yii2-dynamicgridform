@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 ?>
 <div id="<?= $model->widgetContainer ?>">
-    <table <?= Html::renderTagAttributes($model->options) ?>>
+    <table <?= Html::renderTagAttributes($model->options) ?> data-object="<?=$model->variableJsName?>">
         <thead>
         <tr <?= Html::renderTagAttributes($model->headerRowOptions) ?> >
             <?php foreach ($model->columns as $column): ?>

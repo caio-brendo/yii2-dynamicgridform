@@ -141,7 +141,7 @@ class DynamicGridForm {
      */
     async triggerBeforeInsertEvent() {
         const valueColumns = await this.getValueColumns();
-        const valuesInserted = this.getAllDataTable();
+        const valuesInserted = await this.getAllDataTable();
         return $('#' + this.config.widgetContainer).triggerHandler('beforeInsert', [valueColumns, valuesInserted, this]);
     }
 
@@ -423,19 +423,20 @@ class DynamicGridForm {
      * Returns all data inserted in the table
      * @returns {*[]}
      */
-    getAllDataTable() {
+    async getAllDataTable() {
         const ret = [];
-        $(this.selectorTableRows).each(async (key, row) => {
+        for (const [key, row] of $(this.selectorTableRows).toArray().entries()) {
             let object = {};
-            for (const [key, column] of this.columns.entries()) {
-                if (column.id) {
-                    const element = $(row).find(`input[data-reference="${column.id}"]`);
+            for (const [key2, column] of this.columns.entries()) {
+                if (column.classJs instanceof TextColumn) {
+                    const name = column.templateInputName.replace('<@>', key);
+                    const element = $(row).find(`input[name="${name}"]`);
                     const factory = InputFactory.getInstance(element);
-                    object[column.id] = await factory.getValue();
+                    object[column.attribute] = await factory.getValue();
                 }
             }
             ret.push(object);
-        });
+        }
 
         return ret;
     }

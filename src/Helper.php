@@ -19,7 +19,7 @@ class Helper extends Model
     {
         $model = new $modelClass;
         $formName = $model->formName();
-        $pkModel = $model->tableSchema->primaryKey;
+        $pkModel = $model::getPrimaryKey();
         $post = empty($data) ? Yii::$app->request->post($formName) :
             self::getValueIfKeyExists($formName, $data);
         $models = [];

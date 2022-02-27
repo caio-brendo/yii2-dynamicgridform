@@ -50,7 +50,7 @@ class NormalColumn extends TextColumn
             $text = $model->$attribute;
         }
 
-        return Html::tag('td', $text . $this->getInput($model, $key), $this->options);
+        return Html::tag('td', $text . $this->getInput($model, $key, $this->id), $this->options);
     }
 
     /**
