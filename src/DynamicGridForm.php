@@ -13,6 +13,12 @@ use yii\web\View;
 class DynamicGridForm extends Widget
 {
     /**
+     * @var array the HTML attributes for the widget container tag.
+     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     */
+    public $options = [];
+
+    /**
      * @var array
      */
     public $columns;
