@@ -1,5 +1,11 @@
 Change Log: `yii2-dynamicgridform`
 =================================
+## [Version 1.5.0](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.4.0...v1.5.0)
+
+**Date:** 27-February-2022
+- [(enh #22)](https://github.com/caio-brendo/yii2-dynamicgridform/issues/22): Get the Dynamicgridform js instance in the anywhere of the view
+- [(enh #21)](https://github.com/caio-brendo/yii2-dynamicgridform/issues/21): In event before insert the param valuesInserted does not bring the values of the update
+
 ## [Version 1.4.0](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.3.0...v1.4.0)
 
 **Date:** 27-February-2022

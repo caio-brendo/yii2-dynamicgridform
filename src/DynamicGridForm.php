@@ -94,6 +94,12 @@ class DynamicGridForm extends Widget
      */
     public $modelClass;
 
+    /**
+     * The name of global varible js that represents the current object
+     * @var string
+     */
+    public $variableJsName;
+
 
 
     /**
@@ -133,6 +139,10 @@ class DynamicGridForm extends Widget
 
         if (!isset($this->options['class'])) {
             $this->options['class'] = 'table table-striped table-hover';
+        }
+
+        if (!$this->variableJsName) {
+            $this->variableJsName = 'dgf'.$this->hash;
         }
 
         $this->initColumns();
@@ -177,7 +187,7 @@ class DynamicGridForm extends Widget
      */
     public function registerJs(View $view)
     {
-        $js = "var dgf{$this->getHash()} = new DynamicGridForm({$this->configToJson()});";
+        $js = "window['{$this->variableJsName}'] = new DynamicGridForm({$this->configToJson()});";
         $view->registerJs($js, $view::POS_READY);
         DynamicGridFormAsset::register($view);
     }

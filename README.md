@@ -43,9 +43,10 @@ composer require caio-brendo/yii2-dynamicgridform
 
 > NOTE: Refer the [CHANGE LOG](https://github.com/caio-brendo/yii2-dynamicgridform/blob/master/CHANGE.md) for details on changes to various releases.
 
-Enhancements with release v1.4.0:
+Enhancements with release v1.5.0:
 
-- Remove dependecy of yii bootstrap widget
+- Get the Dynamicgridform js instance in the anywhere of the view
+- In event before insert the param valuesInserted does not bring the values of the update
 
 PREVIEW
 ------------
@@ -541,6 +542,22 @@ The widget supports all parameters that one would pass for any [Yii Input Widget
 * $headerRowOptions: An array with the options of the header row. You can see the options allowed [here](https://www.yiiframework.com/doc/api/2.0/yii-helpers-basehtml#renderTagAttributes()-detail).
 * deleteRowClass: An string to inform a class that will be used to drop a line.
 * modelClass: An string to inform the class that is used in DynamicGridForm
+* variableJsName: Since of v1.5.0 you can specify the name of global variable that represents the Dynamic Grid From object javascript, so the instance of class Dynamic GridForm (js) will set with the string informed
+
+JAVASCRIPT MANIPULATIONS
+------------
+- Since of v1.5.0 you can access the instance of class that represents the DynamicGridForm (js) through the following code.
+```javascript
+window[$("#tableId").attr('data-object')]
+```
+- If you informed the property "variableJsName" you can access directly with the name specified in the variable.
+```javascript
+window['{stringInformedInThevariableJsName}']
+```
+- You can get the all values inserted in the grid with the follow code:
+```javascript
+window[$("#tableId").attr('data-object')].getAllDataTable()
+```
 
 JAVASCRIPT EVENTS
 ------------
