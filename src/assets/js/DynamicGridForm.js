@@ -343,7 +343,7 @@ class DynamicGridForm {
      */
     reorderInputs() {
         $(this.selectorTableRows).each((key, row) => {
-            $(row).find('input[type="hidden"]').each((k, input) => {
+            $(row).find('.dgf-reorder').each((k, input) => {
                 $(input).attr('name', $(input).attr('name').replace(/\[\d+\]/, `[${key}]`));
             })
         });

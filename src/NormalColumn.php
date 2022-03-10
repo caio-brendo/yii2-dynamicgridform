@@ -44,7 +44,7 @@ class NormalColumn extends TextColumn
         $attribute = $this->attribute;
         if ($this->text) {
             $text = $this->text instanceof \Closure
-                ? call_user_func($this->text, $model, $key, $index)
+                ? call_user_func($this->text, $model, $key, $index, $this->getInputName($model, $key))
                 : $this->text;
         } else {
             $text = $model->$attribute;

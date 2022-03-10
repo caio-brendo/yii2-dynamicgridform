@@ -1,5 +1,11 @@
 Change Log: `yii2-dynamicgridform`
 =================================
+## [Version 1.6.0](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.5.0...v1.6.0)
+
+**Date:** 10-March-2022
+- [(enh #26)](https://github.com/caio-brendo/yii2-dynamicgridform/issues/26): Pass input name and index in "text" and "textOnInsert" options for columns
+- [(enh #25)](https://github.com/caio-brendo/yii2-dynamicgridform/issues/25): Add opption to not show the hidden input
+
 ## [Version 1.5.0](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.4.0...v1.5.0)
 
 **Date:** 27-February-2022

@@ -43,10 +43,10 @@ composer require caio-brendo/yii2-dynamicgridform
 
 > NOTE: Refer the [CHANGE LOG](https://github.com/caio-brendo/yii2-dynamicgridform/blob/master/CHANGE.md) for details on changes to various releases.
 
-Enhancements with release v1.5.0:
+Enhancements with release v1.6.0:
 
-- Get the Dynamicgridform js instance in the anywhere of the view
-- In event before insert the param valuesInserted does not bring the values of the update
+- Pass input name and index in "text" and "textOnInsert" options for columns
+- Add opption to not show the hidden input
 
 PREVIEW
 ------------
@@ -397,7 +397,7 @@ The widget supports all parameters that one would pass for any [Yii Input Widget
               'headerOptions' => [
                   'width' => 20
               ],
-              'text' => static function($model, $index){
+              'text' => static function($model, $key, $index, $name){
                   return $model->ddi;
               }                   
           ],
@@ -420,7 +420,7 @@ The widget supports all parameters that one would pass for any [Yii Input Widget
               'headerOptions' => [
                   'width' => 20
               ],
-              'textOnInsert' => new JsExpression('(input) => {console.log(input);return $(input).val()}')
+              'textOnInsert' => new JsExpression('(input, index, name) => {console.log(input);return $(input).val()}')
           ],
         //...
       ]
@@ -430,7 +430,8 @@ The widget supports all parameters that one would pass for any [Yii Input Widget
     ```
     * cleanAfterInsert: A boolean param. If true after insert a line in the grid the input will be cleared.
     * header: A string to inform the column header in the grid.
-    
+    * showHiddenInput: A boolean param, when not informed is default true. If true the hidden input is shown 
+
 * columns: For ActionColumn the parameters accept are: 
     * headerOptions: An array with the options of header. You can see the options allowed [here](https://www.yiiframework.com/doc/api/2.0/yii-helpers-basehtml#renderTagAttributes()-detail).   
     * options: An array with the options of content. You can see the options allowed [here](https://www.yiiframework.com/doc/api/2.0/yii-helpers-basehtml#renderTagAttributes()-detail).
