@@ -21,6 +21,8 @@ abstract class TextColumn extends Column
     public $textOnInsert;
     /** @var string */
     public $templateInputName;
+    /** @var bool */
+    public $showHiddenInput = true;
 
     /**
      * @inheritDoc
@@ -57,6 +59,10 @@ abstract class TextColumn extends Column
      */
     public function getInput($model, $key, $id = null)
     {
+        if (!$this->showHiddenInput) {
+            return '';
+        }
+
         $attribute = $this->attribute;
         $value = $model->$attribute;
         if ($this->value) {
@@ -65,7 +71,18 @@ abstract class TextColumn extends Column
                 : $this->value;
         }
         $reference = $id ? "data-reference=\"$id\"" : '';
-        $name = Html::getInputName($model, "[$key]$attribute");
+        $name = $this->getInputName($model, $key);
         return "<input type=\"hidden\" name=\"$name\" value=\"{$value}\" $reference>";
+    }
+
+    /**
+     * Returns the name of input
+     * @param $model
+     * @param $key
+     * @return string
+     */
+    public function getInputName($model, $key) {
+        $attribute = $this->attribute;
+        return Html::getInputName($model, "[$key]$attribute");
     }
 }

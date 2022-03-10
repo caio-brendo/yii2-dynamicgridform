@@ -8,6 +8,7 @@ class TextColumn extends Column {
      * @param {string|Function|undefined} config.textOnInsert Custom Text shown in the grid
      * @param {string|Function|undefined} config.valueOnInsert Custom value in the grid
      * @param {Object.options<string, string>} config.options The html options
+     * @param {boolean} config.showHiddenInput
      */
     constructor(config) {
         super(config);
@@ -21,6 +22,7 @@ class TextColumn extends Column {
         this.templateInputName = config.templateInputName;
         this.textOnInsert = config.textOnInsert;
         this.valueOnInsert = config.valueOnInsert;
+        this.showHiddenInput = config.showHiddenInput;
     }
 
 }

@@ -28,7 +28,7 @@ class InputHelper {
     static getHiddenInput(baseName, values, index) {
         // If value is empty returns input with value empty;
         if (values.length === 0) {
-            return `<input type="hidden" name="${this.getNewNameInput(baseName, false, index)}" value="" data-reference="">`;
+            return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput(baseName, false, index)}" value="" data-reference="">`;
         }
 
         let ret = [];
@@ -36,6 +36,7 @@ class InputHelper {
             ret.push(
                 `<input 
                     type="hidden" 
+                    class="dgf-reorder" 
                     name="${this.getNewNameInput(baseName, values.length > 1, index)}"
                     value="${v.value}" 
                     ${v.reference ? `data-reference="${v.reference}"` : ''}

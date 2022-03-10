@@ -56,7 +56,7 @@ class NormalColumn extends TextColumn {
     async getText(factory) {
         if (this.textOnInsert) {
             return typeof this.textOnInsert === 'function' ?
-                this.textOnInsert(this.elementInput) :
+                this.textOnInsert(this.elementInput, factory.index, InputHelper.getNewNameInput(this.templateInputName, false, factory.index)) :
                 this.textOnInsert;
         }
 
@@ -69,6 +69,10 @@ class NormalColumn extends TextColumn {
      * @returns {Promise<string>}
      */
     async getHiddenInput(factory) {
+        if (!this.showHiddenInput) {
+            return '';
+        }
+
         if (this.valueOnInsert) {
             let val = typeof this.valueOnInsert === 'function' ?
                 this.valueOnInsert(this.elementInput) :

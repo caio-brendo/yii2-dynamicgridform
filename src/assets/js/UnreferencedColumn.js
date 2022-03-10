@@ -7,16 +7,17 @@ class UnreferencedColumn extends TextColumn {
      */
     async renderContent(values, index) {
 
-        return `<td ${this.cellOptions}>${await this.getText() + await this.getHiddenInput(index)}</td>`;
+        return `<td ${this.cellOptions}>${await this.getText(index) + await this.getHiddenInput(index)}</td>`;
     }
 
     /**
      * Returns text of grid
+     * @param index {string}
      * @returns {Promise<string>}
      */
-    async getText() {
+    async getText(index) {
         return typeof this.textOnInsert === 'function' ?
-            this.textOnInsert() :
+            this.textOnInsert(index, InputHelper.getNewNameInput(this.templateInputName, false, index)) :
             this.textOnInsert;
     }
 
@@ -26,6 +27,10 @@ class UnreferencedColumn extends TextColumn {
      * @returns {Promise<string>}
      */
     async getHiddenInput(index) {
+        if (!this.showHiddenInput) {
+            return '';
+        }
+
         let val = typeof this.valueOnInsert === 'function' ?
             this.valueOnInsert() :
             this.valueOnInsert;
