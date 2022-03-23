@@ -43,10 +43,11 @@ composer require caio-brendo/yii2-dynamicgridform
 
 > NOTE: Refer the [CHANGE LOG](https://github.com/caio-brendo/yii2-dynamicgridform/blob/master/CHANGE.md) for details on changes to various releases.
 
-Enhancements with release v1.6.0:
+Bugs fixed with release v1.6.1:
 
-- Pass input name and index in "text" and "textOnInsert" options for columns
-- Add opption to not show the hidden input
+- Error in createMultiple method #30
+- beforeUpdate does not capture return to prevent the update #29
+- In edit mode and delete row the inputs was the name wrong #28
 
 PREVIEW
 ------------

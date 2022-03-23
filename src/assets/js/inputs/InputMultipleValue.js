@@ -30,13 +30,13 @@ class InputMultipleValue extends BaseInput{
 
         // If value is empty returns input with value empty;
         if (await this.getValue().length === 0) {
-            return `<input type="hidden" name="${this.getNewNameInput()}" value="" data-reference="${this.reference}">`;
+            return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="" data-reference="${this.reference}">`;
         }
 
         let ret = [];
         for (const value of await this.getValue()){
             ret.push(
-                `<input type="hidden" name="${this.getNewNameInput()}" value="${await value}" data-reference="${this.reference}">`
+                `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="${await value}" data-reference="${this.reference}">`
             );
         }
 

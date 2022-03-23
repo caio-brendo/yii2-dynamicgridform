@@ -24,10 +24,10 @@ class InputSingleValue extends BaseInput{
 
         // If value is empty returns input with value empty;
         if (!await this.getValue()) {
-            return `<input type="hidden" name="${this.getNewNameInput()}" value="" data-reference="${this.reference}">`;
+            return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="" data-reference="${this.reference}">`;
         }
 
-        return `<input type="hidden" name="${this.getNewNameInput()}" value="${await this.getValue()}" data-reference="${this.reference}">`
+        return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="${await this.getValue()}" data-reference="${this.reference}">`
     }
 
     /**
