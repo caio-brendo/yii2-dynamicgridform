@@ -1,5 +1,12 @@
 Change Log: `yii2-dynamicgridform`
 =================================
+## [Version 1.6.1](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.6.0...v1.6.1)
+
+**Date:** 23-March-2022
+- [(enh #28)](https://github.com/caio-brendo/yii2-dynamicgridform/issues/28): Error in createMultiple method #30
+- [(enh #29)](https://github.com/caio-brendo/yii2-dynamicgridform/issues/29): beforeUpdate does not capture return to prevent the update #29
+- [(enh #30)](https://github.com/caio-brendo/yii2-dynamicgridform/issues/30): In edit mode and delete row the inputs was the name wrong #28
+- 
 ## [Version 1.6.0](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.5.0...v1.6.0)
 
 **Date:** 10-March-2022
