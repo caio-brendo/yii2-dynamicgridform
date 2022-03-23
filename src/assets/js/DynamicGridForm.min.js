@@ -100,7 +100,10 @@ class DynamicGridForm {
      */
     async handleClickInsertButton() {
         if (this.isEditMode()) {
-            this.triggerBeforeUpdate();
+            const handle = await this.triggerBeforeUpdate();
+            if (handle === false) {
+                return;
+            }
             const html = await this.getHtmlRow();
             const row = this.rowEdit;
             row.after(html);
@@ -397,10 +400,10 @@ class DynamicGridForm {
 
     /**
      * Dispatch limit reached event
-     * @return {void}
+     * @return {boolean|null}
      */
     async triggerBeforeUpdate() {
-        $('#' + this.config.widgetContainer).triggerHandler('beforeUpdate', await this.getValueColumns());
+        return $('#' + this.config.widgetContainer).triggerHandler('beforeUpdate', await this.getValueColumns());
     }
 
     /**
