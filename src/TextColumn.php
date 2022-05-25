@@ -72,7 +72,7 @@ abstract class TextColumn extends Column
         }
         $reference = $id ? "data-reference=\"$id\"" : '';
         $name = $this->getInputName($model, $key);
-        return "<input type=\"hidden\" name=\"$name\" value=\"{$value}\" $reference>";
+        return "<input type=\"hidden\" class=\"dgf-reorder\" name=\"$name\" value=\"{$value}\" $reference>";
     }
 
     /**

@@ -1,5 +1,10 @@
 Change Log: `yii2-dynamicgridform`
 =================================
+## [Version 1.6.2](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.6.1...v1.6.2)
+
+**Date:** 25-May-2022
+- [(bug #33)](https://github.com/caio-brendo/yii2-dynamicgridform/issues/33): Inputs aren't reordering the index
+
 ## [Version 1.6.1](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.6.0...v1.6.1)
 
 **Date:** 23-March-2022
