@@ -26,8 +26,8 @@ class InputSingleValue extends BaseInput{
         if (!await this.getValue()) {
             return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="" data-reference="${this.reference}">`;
         }
-
-        return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="${await this.getValue()}" data-reference="${this.reference}">`
+        const value = (await this.getValue()).replaceAll('"', '&quot;');
+        return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="${value}" data-reference="${this.reference}">`
     }
 
     /**

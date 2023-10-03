@@ -64,7 +64,7 @@ abstract class TextColumn extends Column
         }
 
         $attribute = $this->attribute;
-        $value = $model->$attribute;
+        $value = str_replace('"', "&quot;", $model->$attribute);
         if ($this->value) {
             $value = $this->value instanceof Closure
                 ? call_user_func($this->value, $model, $key, $key)

@@ -33,12 +33,13 @@ class InputHelper {
 
         let ret = [];
         values.forEach((v) => {
+            const value = v.value.replaceAll('"', '&quot;');
             ret.push(
                 `<input 
                     type="hidden" 
                     class="dgf-reorder" 
                     name="${this.getNewNameInput(baseName, values.length > 1, index)}"
-                    value="${v.value}" 
+                    value="${value}" 
                     ${v.reference ? `data-reference="${v.reference}"` : ''}
                 >`
             );

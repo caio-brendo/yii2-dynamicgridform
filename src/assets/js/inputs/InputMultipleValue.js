@@ -34,9 +34,10 @@ class InputMultipleValue extends BaseInput{
         }
 
         let ret = [];
-        for (const value of await this.getValue()){
+        for (let value of await this.getValue()){
+            value = (await value).replaceAll('"', '&quot;');
             ret.push(
-                `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="${await value}" data-reference="${this.reference}">`
+                `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="${value}" data-reference="${this.reference}">`
             );
         }
 
