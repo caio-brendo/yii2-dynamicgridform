@@ -33,7 +33,9 @@ class InputHelper {
 
         let ret = [];
         values.forEach((v) => {
-            const value = v.value.replaceAll('"', '&quot;');
+            const value = typeof v.value === 'string' ?
+                v.value.replaceAll('"', '&quot;') :
+                v.value;
             ret.push(
                 `<input 
                     type="hidden" 

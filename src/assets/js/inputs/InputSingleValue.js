@@ -26,7 +26,8 @@ class InputSingleValue extends BaseInput{
         if (!await this.getValue()) {
             return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="" data-reference="${this.reference}">`;
         }
-        const value = (await this.getValue()).replaceAll('"', '&quot;');
+        let value = (await this.getValue());
+        value = typeof value === 'string' ? value.replaceAll('"', '&quot;') : value;
         return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="${value}" data-reference="${this.reference}">`
     }
 
