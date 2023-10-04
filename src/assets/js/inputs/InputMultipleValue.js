@@ -4,7 +4,7 @@ class InputMultipleValue extends BaseInput{
      * @inheritDoc
      */
     async getValue() {
-        return this.input.val();
+        return InputHelper.encodeValue(this.input.val());
     }
 
     /**
@@ -34,11 +34,9 @@ class InputMultipleValue extends BaseInput{
         }
 
         let ret = [];
-        for (let value of await this.getValue()){
-            value = (await value);
-            value = typeof value === 'string' ? value.replaceAll('"', '&quot;') : value;
+        for (const value of await this.getValue()){
             ret.push(
-                `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="${value}" data-reference="${this.reference}">`
+                `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="${await value}" data-reference="${this.reference}">`
             );
         }
 

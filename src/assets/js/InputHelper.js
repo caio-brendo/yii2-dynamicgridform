@@ -33,9 +33,7 @@ class InputHelper {
 
         let ret = [];
         values.forEach((v) => {
-            const value = typeof v.value === 'string' ?
-                v.value.replaceAll('"', '&quot;') :
-                v.value;
+            const value = this.encodeValue(v.value);
             ret.push(
                 `<input 
                     type="hidden" 
@@ -200,5 +198,19 @@ class InputHelper {
     static elementIsDivAndCheckbox(input){
         const sons = $(input).find('input[type="checkbox"]');
         return this.elementIsDiv(input) && sons.length;
+    }
+
+    /**
+     * Encode value removing & and replacing for &quot;
+     * @returns {string|*}
+     * @param {*} value
+     */
+    static encodeValue(value)
+    {
+        if (typeof value === 'string') {
+            return value.replace(/&/g, '&quot;');
+        }
+
+        return value;
     }
 }

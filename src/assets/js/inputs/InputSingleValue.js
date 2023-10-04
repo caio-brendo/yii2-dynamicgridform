@@ -4,7 +4,7 @@ class InputSingleValue extends BaseInput{
      * @inheritDoc
      */
     async getValue() {
-        return this.input.val();
+        return InputHelper.encodeValue(this.input.val());
     }
 
     /**
@@ -26,9 +26,8 @@ class InputSingleValue extends BaseInput{
         if (!await this.getValue()) {
             return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="" data-reference="${this.reference}">`;
         }
-        let value = (await this.getValue());
-        value = typeof value === 'string' ? value.replaceAll('"', '&quot;') : value;
-        return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="${value}" data-reference="${this.reference}">`
+
+        return `<input type="hidden" class="dgf-reorder" name="${this.getNewNameInput()}" value="${await this.getValue()}" data-reference="${this.reference}">`
     }
 
     /**
