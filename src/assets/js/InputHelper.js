@@ -208,7 +208,7 @@ class InputHelper {
     static encodeValue(value)
     {
         if (typeof value === 'string') {
-            return value.replace(/&/g, '&quot;');
+            return value.replace(/"/g, '&quot;');
         }
 
         return value;
