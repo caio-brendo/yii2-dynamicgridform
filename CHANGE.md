@@ -1,5 +1,10 @@
 Change Log: `yii2-dynamicgridform`
 =================================
+## [Version 1.6.6](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.6.5...v1.6.6)
+
+**Date:** 05-December-2023
+- bug: Text breaking when adding quotes
+
 ## [Version 1.6.2](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.6.1...v1.6.2)
 
 **Date:** 25-May-2022
