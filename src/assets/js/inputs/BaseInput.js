@@ -81,7 +81,7 @@ class BaseInput {
      * @return {boolean}
      */
     hasIndex() {
-        return !!this.index;
+        return !!this.index || this.index == 0;
     }
 
     /**
