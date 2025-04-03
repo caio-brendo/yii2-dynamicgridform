@@ -1,5 +1,10 @@
 Change Log: `yii2-dynamicgridform`
 =================================
+## [Version 1.6.9](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.6.8...v1.6.9)
+
+**Date:** 03-April-2025
+- bug: Fixing the index validation in input multiple values in the .min file
+
 ## [Version 1.6.8](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.6.7...v1.6.8)
 
 **Date:** 04-February-2025
