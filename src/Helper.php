@@ -32,9 +32,9 @@ class Helper extends Model
         if ($post && is_array($post)) {
             foreach ($post as $i => $item) {
                 if (isset($item[$pkModel[0]]) && !empty($item[$pkModel[0]]) && isset($multipleModels[$item[$pkModel[0]]])) {
-                    $models[] = $multipleModels[$item[$pkModel[0]]];
+                    $models[$i] = $multipleModels[$item[$pkModel[0]]];
                 } else {
-                    $models[] = new $modelClass;
+                    $models[$i] = new $modelClass;
                 }
             }
         }
