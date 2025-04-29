@@ -1,5 +1,11 @@
 Change Log: `yii2-dynamicgridform`
 =================================
+## [Version 1.6.10](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.6.9...v1.6.10)
+
+**Date:** 29-April-2025
+
+- bug: improve checkbox input handling and row deletion logic
+- 
 ## [Version 1.6.9](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.6.8...v1.6.9)
 
 **Date:** 03-April-2025

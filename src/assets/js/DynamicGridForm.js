@@ -182,7 +182,7 @@ class DynamicGridForm {
     async handleDeleteRow(event) {
         event.stopPropagation();
         const {currentTarget} = event;
-        const line = $(currentTarget).parent().parent();
+        const line = $(currentTarget).closest('tr');
         const del = this.triggerBeforeDelete(line.get(0));
 
         if (del === false){
