@@ -197,7 +197,7 @@ class InputHelper {
      */
     static elementIsDivAndCheckbox(input){
         const sons = $(input).find('input[type="checkbox"]');
-        return this.elementIsDiv(input) && sons.length;
+        return this.elementIsDiv(input) && sons.length > 0;
     }
 
     /**
