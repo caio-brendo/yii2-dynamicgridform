@@ -183,7 +183,7 @@ class DynamicGridForm {
         event.stopPropagation();
         const {currentTarget} = event;
         const line = $(currentTarget).closest('tr');
-        const del = this.triggerBeforeDelete(line.get(0));
+        const del = await this.triggerBeforeDelete(line.get(0));
 
         if (del === false){
             return;
