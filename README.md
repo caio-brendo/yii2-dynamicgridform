@@ -43,9 +43,9 @@ composer require caio-brendo/yii2-dynamicgridform
 
 > NOTE: Refer the [CHANGE LOG](https://github.com/caio-brendo/yii2-dynamicgridform/blob/master/CHANGE.md) for details on changes to various releases.
 
-Bugs fixed with release v1.6.2:
+Bugs fixed with release v1.7.2:
 
-- Inputs aren't reordering the index
+- Bugs fixed with release v1.7.2:
 
 PREVIEW
 ------------
