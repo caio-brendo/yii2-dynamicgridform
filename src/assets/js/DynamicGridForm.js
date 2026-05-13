@@ -17,6 +17,7 @@
  * @property {Object} rowOptions
  * @property {Object} rowOptions
  * @property {string} deleteRowClass
+ * @property {string} editRowClass
  */
 class DynamicGridForm {
     /**
@@ -222,7 +223,12 @@ class DynamicGridForm {
      * @param event {Event}
      */
     handleClickRow(event) {
-        const {currentTarget} = event;
+        const { currentTarget, target } = event;
+
+        if (this.editRowClass && !$(target).closest(`.${this.editRowClass}`).length) {
+            return;
+        }
+
         if (this.config.allowEdit) {
             if (this.isEditMode()) {
                 this.cancelEdit();
@@ -322,6 +328,14 @@ class DynamicGridForm {
      */
     get deleteRowClass() {
         return this.config.deleteRowClass;
+    }
+
+    /**
+     * Returns the class of edit row
+     * @return {string}
+     */
+    get editRowClass() {
+        return this.config.editRowClass;
     }
 
     /**

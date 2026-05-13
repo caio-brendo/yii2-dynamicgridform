@@ -89,6 +89,12 @@ class DynamicGridForm extends Widget
     public $deleteRowClass = '';
 
     /**
+     * The class that delete row
+     * @var string
+     */
+    public $editRowClass = '';
+
+    /**
      * The class name of model referenced.
      * @var string
      */
@@ -207,7 +213,8 @@ class DynamicGridForm extends Widget
             'allowEdit' => $this->allowEdit,
             'options' => $this->options,
             'rowOptions' => $this->rowOptions,
-            'deleteRowClass' => $this->deleteRowClass
+            'deleteRowClass' => $this->deleteRowClass,
+            'editRowClass' => $this->editRowClass
         ]);
     }
 
