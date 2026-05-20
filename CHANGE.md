@@ -1,5 +1,11 @@
 Change Log: `yii2-dynamicgridform`
 =================================
+## [Version 1.7.3](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.7.2...v1.7.3)
+
+**Date:** 20-May-2026
+
+- feature: add parameter editRowClass
+
 ## [Version 1.7.2](https://github.com/caio-brendo/yii2-dynamicgridform/compare/v1.7.1...v1.7.2)
 
 **Date:** 02-March-2026

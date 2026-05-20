@@ -53,9 +53,12 @@ class DynamicGridForm {
         if (this.deleteRowClass) {
             $(document).on('click', `#${this.widgetContainer} .${this.deleteRowClass}`, this.handleDeleteRow.bind(this));
         }
+        if (this.config.allowEdit) {
+            const selector = this.editRowClass ? `.${this.editRowClass}` : this.selectorTableRows;
 
-        $(document).on('click', this.selectorTableRows, this.handleClickRow.bind(this));
-        $('#' + this.config.widgetContainer).on('cancelEdit', this.cancelEdit.bind(this));
+            $(document).on('click', selector, this.handleClickRow.bind(this));
+            $(`#${this.config.widgetContainer}`).on('cancelEdit', this.cancelEdit.bind(this));
+        }
 
     }
 
@@ -222,38 +225,32 @@ class DynamicGridForm {
      * Handle click row
      * @param event {Event}
      */
-    handleClickRow(event) {
-        const { currentTarget, target } = event;
-
-        if (this.editRowClass && !$(target).closest(`.${this.editRowClass}`).length) {
-            return;
+    handleClickRow(event)
+    {
+        const { currentTarget } = event;
+        if (this.isEditMode()) {
+            this.cancelEdit();
         }
+        $(currentTarget).attr('data-edit', true);
+        let added = [];
+        $(currentTarget).find('input[data-reference]').each((k, v) => {
+            const reference = $(v).attr('data-reference');
+            const referenceElement = $('#' + reference);
 
-        if (this.config.allowEdit) {
-            if (this.isEditMode()) {
-                this.cancelEdit();
+            // if reference is not added and the element referenced is div then clean checkbox selections
+            if (added.indexOf(reference) === -1 && InputHelper.elementIsDiv(referenceElement)) {
+                referenceElement.find('input[type="checkbox"]').prop('checked', false);
             }
-            $(currentTarget).attr('data-edit', true);
-            let added = [];
-            $(currentTarget).find('input[data-reference]').each((k, v) => {
-                const reference = $(v).attr('data-reference');
-                const referenceElement = $('#' + reference);
 
-                // if reference is not added and the element referenced is div then clean checkbox selections
-                if (added.indexOf(reference) === -1 && InputHelper.elementIsDiv(referenceElement)) {
-                    referenceElement.find('input[type="checkbox"]').prop('checked', false);
-                }
+            // if reference is not added and the element referenced is select multiple then clean the selections
+            if (added.indexOf(reference) === -1 && InputHelper.inputIsSelectMultiple(referenceElement)) {
+                referenceElement.val('');
+            }
 
-                // if reference is not added and the element referenced is select multiple then clean the selections
-                if (added.indexOf(reference) === -1 && InputHelper.inputIsSelectMultiple(referenceElement)) {
-                    referenceElement.val('');
-                }
-
-                const factory = InputFactory.getInstance(referenceElement);
-                factory.setValue($(v).val())
-                added.push(reference);
-            });
-        }
+            const factory = InputFactory.getInstance(referenceElement);
+            factory.setValue($(v).val())
+            added.push(reference);
+        });
     }
 
     /**
