@@ -538,10 +538,11 @@ The widget supports all parameters that one would pass for any [Yii Input Widget
 * max: A number that limits the number of lines inserted. When 0 is informed then will be unlimited. Default 0.
 * insertPosition: A string (bottom or top) to inform where the new line will be inserted. Default "bottom"
 * allowEdit: A boolean param. When true you can edit the content of the line clicked.
+* editRowClass: A string to specify the class that will be used to trigger row editing. When set, this disables the default behavior of editing by clicking on the row, and only allows editing when an element with this class is clicked.
 * rowOptions: An array with the options of the row. You can see the options allowed [here](https://www.yiiframework.com/doc/api/2.0/yii-helpers-basehtml#renderTagAttributes()-detail).
 * $headerRowOptions: An array with the options of the header row. You can see the options allowed [here](https://www.yiiframework.com/doc/api/2.0/yii-helpers-basehtml#renderTagAttributes()-detail).
-* deleteRowClass: An string to inform a class that will be used to drop a line.
-* modelClass: An string to inform the class that is used in DynamicGridForm
+* deleteRowClass: A string to inform a class that will be used to drop a line.
+* modelClass: A string to inform the class that is used in DynamicGridForm
 * variableJsName: Since of v1.5.0 you can specify the name of global variable that represents the Dynamic Grid From object javascript, so the instance of class Dynamic GridForm (js) will set with the string informed
 
 JAVASCRIPT MANIPULATIONS
