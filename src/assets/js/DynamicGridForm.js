@@ -228,12 +228,13 @@ class DynamicGridForm {
     handleClickRow(event)
     {
         const { currentTarget } = event;
+        const tr = this.editRowClass ? $(currentTarget).closest('tr') : $(currentTarget);
         if (this.isEditMode()) {
             this.cancelEdit();
         }
-        $(currentTarget).attr('data-edit', true);
+        tr.attr('data-edit', true);
         let added = [];
-        $(currentTarget).find('input[data-reference]').each((k, v) => {
+        tr.find('input[data-reference]').each((k, v) => {
             const reference = $(v).attr('data-reference');
             const referenceElement = $('#' + reference);
 
